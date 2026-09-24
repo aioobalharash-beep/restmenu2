@@ -197,7 +197,7 @@ function Action({
   return (
     <button
       onClick={onClick}
-      className={`focus-ring rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+      className={`focus-ring rounded-lg px-4 py-2 text-sm font-medium transition-all ease-smooth-out ${
         ghost
           ? "text-ink-soft hover:bg-porcelain-deep hover:text-ink"
           : "bg-ink text-cream hover:-translate-y-0.5"

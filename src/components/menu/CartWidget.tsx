@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { MOTION } from "@/lib/motion";
 import { useState } from "react";
 import { formatOmr } from "@/lib/money";
 import { useCart } from "./CartContext";
@@ -37,8 +38,8 @@ export default function CartWidget() {
         {count > 0 && !open && (
           <motion.button
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: MOTION.slow, ease: MOTION.smoothOut } }}
+            exit={{ opacity: 0, y: 20, transition: { duration: MOTION.medium, ease: MOTION.smoothOut } }}
             onClick={() => setOpen(true)}
             className="focus-ring fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] z-50 inline-flex items-center gap-2.5 rounded-full px-5 py-3 text-sm font-medium text-cream shadow-lift end-5"
             style={{ background: "linear-gradient(140deg, var(--color-saffron), var(--color-saffron-deep))" }}
@@ -70,9 +71,8 @@ export default function CartWidget() {
             <motion.div
               className={`flex max-h-[88dvh] w-full max-w-md flex-col overflow-hidden rounded-t-3xl bg-cream shadow-float sm:rounded-3xl ${rtl ? "lang-ar" : ""}`}
               initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ type: "spring", stiffness: 320, damping: 34 }}
+              animate={{ y: 0, transition: { duration: MOTION.slow, ease: MOTION.smoothOut } }}
+              exit={{ y: "100%", transition: { duration: MOTION.medium, ease: MOTION.smoothOut } }}
             >
               {sent ? (
                 <div className="flex flex-col items-center gap-3 px-6 py-14 text-center">
@@ -183,7 +183,7 @@ export default function CartWidget() {
                       <button
                         onClick={submit}
                         disabled={submitting}
-                        className="focus-ring w-full rounded-xl px-5 py-3 text-sm font-medium text-cream shadow-lift transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+                        className="focus-ring w-full rounded-xl px-5 py-3 text-sm font-medium text-cream shadow-lift transition-transform ease-smooth-out hover:-translate-y-0.5 disabled:opacity-60"
                         style={{ background: "linear-gradient(140deg, var(--color-saffron), var(--color-saffron-deep))" }}
                       >
                         {submitting ? t("Sending…", "جارٍ الإرسال…") : t("Place order", "إرسال الطلب")}
