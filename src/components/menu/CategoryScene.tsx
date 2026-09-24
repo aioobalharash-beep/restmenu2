@@ -8,6 +8,10 @@ import CourseIndex from "./CourseIndex";
 import ScrollCue from "./ScrollCue";
 import { useLang } from "./LanguageContext";
 
+const AR_DIGITS = "٠١٢٣٤٥٦٧٨٩";
+const pad = (n: number) => String(n).padStart(2, "0");
+const toArabicDigits = (s: string) => s.replace(/\d/g, (d) => AR_DIGITS[Number(d)]);
+
 /** One full-height editorial spread: a course, its copy, and its floating dishes. */
 const CategoryScene = forwardRef<
   HTMLElement,
@@ -30,6 +34,7 @@ const CategoryScene = forwardRef<
   const item = items[index] ?? items[0];
 
   const catName = pick(category.name, category.nameAr);
+  const issueNo = pad(sceneIndex + 1);
 
   // Heuristic: show steam for hot categories (drinks/soups), EN or AR.
   const hot = /hot|drink|coffee|tea|latte|soup|قهوة|شاي|ساخن|حساء|لاتيه|مشروب/i.test(
@@ -40,7 +45,7 @@ const CategoryScene = forwardRef<
     <section
       ref={ref}
       data-scene={sceneIndex}
-      className="relative flex min-h-[100svh] flex-col overflow-hidden px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-[max(4.5rem,calc(env(safe-area-inset-top)+3.75rem))] sm:px-12"
+      className="relative flex min-h-[100svh] flex-col overflow-hidden px-6 pb-[max(2.25rem,calc(env(safe-area-inset-bottom)+1.25rem))] pt-[max(5.25rem,calc(env(safe-area-inset-top)+4.5rem))] sm:pt-[max(5.75rem,calc(env(safe-area-inset-top)+4.5rem))] sm:px-12"
       aria-label={catName}
     >
       {/* Giant ghost course name — a faint masthead behind the spread */}
@@ -52,14 +57,19 @@ const CategoryScene = forwardRef<
         {catName}
       </span>
 
-      {/* Running header: the course name */}
+      {/* Running header: an editorial issue label — "No. 04 — Appetizers" */}
       <div className="relative z-10 text-center">
-        <span
-          className={`text-ink-soft ${
-            rtl ? "text-[0.95rem]" : "font-mono text-[0.7rem] uppercase tracking-[0.3em]"
-          }`}
-        >
-          {catName}
+        <span className={`text-indigo ${rtl ? "text-[0.95rem]" : "font-mono text-[0.68rem] uppercase tracking-[0.34em]"}`}>
+          {rtl ? (
+            <>رقم {toArabicDigits(issueNo)} — {catName}</>
+          ) : (
+            <>
+              <span className="font-display text-[0.95rem] normal-case italic tracking-normal">No.</span>{" "}
+              <span className="tabular-nums">{issueNo}</span>
+              <span className="mx-2 text-saffron">—</span>
+              {catName}
+            </>
+          )}
         </span>
       </div>
 

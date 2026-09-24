@@ -107,7 +107,7 @@ export default function DishImage({
       <motion.div
         aria-hidden
         className="pointer-events-none absolute bottom-[3%] h-[7%] w-[58%] rounded-[50%] blur-xl"
-        style={{ background: "rgba(20,12,4,0.34)" }}
+        style={{ background: "rgba(10,20,16,0.34)" }}
         animate={reduce ? undefined : { scaleX: [1, 0.92, 1], opacity: [0.34, 0.24, 0.34] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />

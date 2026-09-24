@@ -9,7 +9,7 @@ import { brand } from "@/brand.config";
 export default function FloatingLogo() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-40">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 pt-[max(1.1rem,env(safe-area-inset-top))] sm:px-12">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 pt-[max(1.75rem,calc(env(safe-area-inset-top)+1rem))] sm:pt-[max(2.25rem,calc(env(safe-area-inset-top)+1rem))] sm:px-12">
         <a
           href="/"
           className="focus-ring pointer-events-auto inline-flex items-center"
@@ -27,10 +27,11 @@ export default function FloatingLogo() {
             <span className="font-display text-[1.3rem] leading-none tracking-[0.01em] text-ink">
               {brand.name}
               {brand.tagline && (
-                <>
+                // Tagline drops on phones so the wordmark clears the controls.
+                <span className="hidden sm:inline">
                   <span className="text-saffron"> · </span>
                   <span className="italic text-saffron">{brand.tagline}</span>
-                </>
+                </span>
               )}
             </span>
           )}

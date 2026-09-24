@@ -1,36 +1,28 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Instrument_Serif,
-  Schibsted_Grotesk,
-  Space_Mono,
+  Playfair_Display,
+  Libre_Franklin,
   Aref_Ruqaa,
   Tajawal,
 } from "next/font/google";
 import { brand } from "@/brand.config";
 import "./globals.css";
 
-// Editorial serif for dish names + the giant course numerals.
-const serif = Instrument_Serif({
+// Dramatic wide serif (with its italic) for headers, dish names + course numerals.
+const serif = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
 });
 
-// Body / UI grotesk.
-const grotesk = Schibsted_Grotesk({
+// Classic humanist sans for body, prices and the spaced-caps label voice
+// (globals.css points --font-mono-face at this same face).
+const humanist = Libre_Franklin({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-grotesk",
-  display: "swap",
-});
-
-// Monospace for prices, paging, eyebrows — the "gallery label" voice.
-const mono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-mono-face",
   display: "swap",
 });
 
@@ -56,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#efece7",
+  themeColor: "#16231E",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -78,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${grotesk.variable} ${mono.variable} ${arDisplay.variable} ${tajawal.variable}`}
+      className={`${serif.variable} ${humanist.variable} ${arDisplay.variable} ${tajawal.variable}`}
       style={brandVars}
     >
       <body>{children}</body>

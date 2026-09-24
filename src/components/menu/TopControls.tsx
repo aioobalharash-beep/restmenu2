@@ -16,7 +16,7 @@ export default function TopControls({
 
   return (
     <div className="pointer-events-none fixed inset-x-0 top-0 z-40">
-      <div className="mx-auto flex max-w-6xl justify-end gap-2 px-6 pt-[max(1.1rem,env(safe-area-inset-top))] sm:px-12">
+      <div className="mx-auto flex max-w-6xl justify-end gap-2 px-6 pt-[max(1.75rem,calc(env(safe-area-inset-top)+1rem))] sm:pt-[max(2.25rem,calc(env(safe-area-inset-top)+1rem))] sm:px-12">
         <button
           onClick={onToggleTheme}
           className={`${btn} h-[36px] w-[36px]`}
