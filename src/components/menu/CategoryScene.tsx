@@ -36,10 +36,11 @@ const CategoryScene = forwardRef<
   const catName = pick(category.name, category.nameAr);
   const issueNo = pad(sceneIndex + 1);
 
-  // Heuristic: show steam for hot categories (drinks/soups), EN or AR.
-  const hot = /hot|drink|coffee|tea|latte|soup|قهوة|شاي|ساخن|حساء|لاتيه|مشروب/i.test(
-    `${category.name} ${category.nameAr ?? ""}`,
-  );
+  // Heuristic: show steam for hot categories (drinks/soups), EN or AR — never cold ones.
+  const catText = `${category.name} ${category.nameAr ?? ""}`;
+  const hot =
+    /hot|drink|coffee|tea|latte|soup|قهوة|شاي|ساخن|حساء|لاتيه|مشروب/i.test(catText) &&
+    !/cold|iced|smoothie|juice|بارد|مثلج|سموذي|عصير/i.test(catText);
 
   return (
     <section

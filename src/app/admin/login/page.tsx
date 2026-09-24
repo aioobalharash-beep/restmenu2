@@ -67,7 +67,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading || !password}
-            className="focus-ring mt-5 w-full rounded-xl bg-ink px-4 py-3 text-sm font-medium text-cream transition-all hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+            className="focus-ring mt-5 w-full rounded-xl bg-ink px-4 py-3 text-sm font-medium text-cream transition-all ease-smooth-out hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Signing in…" : "Enter"}
           </button>

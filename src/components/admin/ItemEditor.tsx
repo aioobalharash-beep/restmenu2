@@ -212,7 +212,7 @@ export default function ItemEditor({
           <button
             onClick={onSave}
             disabled={saving || uploading}
-            className="focus-ring rounded-xl bg-ink px-5 py-2.5 text-sm font-medium text-cream transition-all hover:-translate-y-0.5 disabled:opacity-50"
+            className="focus-ring rounded-xl bg-ink px-5 py-2.5 text-sm font-medium text-cream transition-all ease-smooth-out hover:-translate-y-0.5 disabled:opacity-50"
           >
             {saving ? "Saving…" : isNew ? "Add dish" : "Save changes"}
           </button>

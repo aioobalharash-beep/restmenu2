@@ -83,7 +83,7 @@ export default function ItemSwiper({
             pointerEvents: near ? "auto" : "none",
             transition: reduce
               ? "none"
-              : "transform 600ms var(--ease-out-expo), opacity 450ms ease",
+              : "transform var(--duration-fast) var(--ease-smooth-out), opacity var(--duration-fast) var(--ease-smooth-out)",
           };
 
           return (
@@ -140,7 +140,7 @@ export default function ItemSwiper({
               className="focus-ring group grid place-items-center py-1"
             >
               <span
-                className="block h-[3px] rounded-full transition-all duration-500"
+                className="block h-[3px] rounded-full transition-[width,background-color] duration-(--duration-fast) ease-smooth-out"
                 style={{
                   width: i === index ? 28 : 10,
                   background:

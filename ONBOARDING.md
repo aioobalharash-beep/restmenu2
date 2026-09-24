@@ -33,6 +33,113 @@ Open a Claude Code session on the new repo and paste a prompt like:
 Also drop their favicon at `src/app/icon.png` (optional). That's the whole
 white-label — one file plus two assets.
 
+## Theme recipes
+Swappable visual presets. Do the white-label steps in §3 first; a preset only
+changes the colour tokens, fonts, and any signature details — never the data
+model, bilingual/RTL, ordering, admin, prices, or deploy config.
+
+### The Parisian Bistro Moderne (café) — *current default*
+**Vibe:** sophisticated, vintage-meets-modern Parisian café menu card.
+
+**Dark-first.** The forest-green "Bistro Night" card is the default view; the
+champagne-cream "Café Card" is the light toggle. In
+`src/components/menu/MenuExperience.tsx` the initial state is
+`useState<"light" | "dark">("dark")` (a guest's saved choice in `rm_theme` still wins).
+
+**Evening — `[data-theme="dark"]` in `src/app/globals.css`**
+```css
+--color-porcelain: #16231E;
+--color-porcelain-deep: #12201A;
+--color-cream: #1B2C25;
+--color-shell: #21362D;
+--color-ink: #F3EFEA;
+--color-ink-soft: #C6CFC7;
+--color-ink-faint: #94A3B8;
+--color-saffron: #C7A96B;
+--color-saffron-deep: #B4924E;
+--color-clay: #C7A96B;
+--color-indigo: #94A3B8;
+--color-sage: #94A3B8;
+--color-hairline: rgba(243, 239, 234, 0.16);
+--color-hairline-soft: rgba(243, 239, 234, 0.08);
+```
+
+**Light — `@theme` in `src/app/globals.css`**
+```css
+--color-porcelain: #F3EFEA;
+--color-porcelain-deep: #E9E3DA;
+--color-cream: #F8F5F0;
+--color-shell: #FCFAF6;
+--color-ink: #16231E;
+--color-ink-soft: #47554E;
+--color-ink-faint: #8A968D;
+--color-saffron: #9A7B3F;
+--color-saffron-deep: #7E6330;
+--color-clay: #9A7B3F;
+--color-indigo: #6E7C72;
+--color-sage: #6E7C72;
+--color-hairline: rgba(22, 35, 30, 0.16);
+--color-hairline-soft: rgba(22, 35, 30, 0.08);
+```
+
+> **Alt:** Midnight Navy is a drop-in for the forest green — evening
+> `--color-porcelain: #111827`, `--color-porcelain-deep: #0E1420`.
+
+**Fonts** (`src/app/layout.tsx`, via `next/font/google`)
+
+| Role | Font | CSS variable |
+|---|---|---|
+| Headers, dish names | **Playfair Display** 400/500/600, normal + italic | `--font-serif` |
+| Body + prices | **Libre Franklin** 300/400/500/600 | `--font-grotesk` |
+| Label voice (prices, eyebrows) | Libre Franklin — `--font-mono-face` points at `--font-grotesk` in `globals.css`; **Space Mono removed** | `--font-mono-face` |
+| Arabic | **Aref Ruqaa** (display) + **Tajawal** (body), unchanged | `--font-ar-display`, `--font-tajawal` |
+
+Labels are spaced caps (`uppercase tracking-[0.2–0.34em]`); prices keep `tabular-nums`.
+
+**Signature details**
+- **Printed-card frame:** `<div className="card-frame pointer-events-none fixed z-30" />`
+  in the shell root of `MenuExperience.tsx`. `.card-frame` in `globals.css` draws a
+  1px ink rule (22% mix) plus a faint champagne-gold inner rule 3px in; inset
+  0.75rem (1.25rem from `sm`), clamped to safe-area insets. Sits above the page,
+  below the controls (z-40), cart/modals (z-50) and intro (z-60). Logo, controls
+  and scene padding were nudged inward to clear it.
+- **Issue-number running header:** in `src/components/menu/CategoryScene.tsx`,
+  e.g. *No.* 04 — APPETIZERS (Playfair italic "No.", zero-padded number, gold
+  dash, sage `text-indigo` spaced caps). Arabic: `رقم ٠٤ — المقبّلات` (Arabic-Indic
+  digits). The giant faint ghost course-name masthead stays behind the spread.
+
+**`src/brand.config.ts`**
+```ts
+name: "Café Moderne",
+tagline: "carte du jour",   // hidden below `sm` so the wordmark clears the controls
+accent: "",                 // "" = palette default champagne-gold
+accentDeep: "",
+```
+
+**`viewport.themeColor`** (`src/app/layout.tsx`): `#16231E`
+
+**Files touched**
+- `src/app/globals.css` — tokens, palette header, `--font-mono-face`, `.card-frame`, dish shadows
+- `src/app/layout.tsx` — fonts, `themeColor`
+- `src/brand.config.ts` — name, tagline
+- `src/components/menu/MenuExperience.tsx` — dark default, `HUES`, frame
+- `src/components/menu/CategoryScene.tsx` — issue label, frame-safe padding
+- `src/components/menu/BackgroundField.tsx` — background pool colour
+- `src/components/menu/PriceTag.tsx` — light-weight tabular price, spaced-caps unit
+- `src/components/menu/FloatingLogo.tsx`, `TopControls.tsx` — inset inside the frame
+- `src/components/menu/DishImage.tsx` — shadow tint
+- `src/lib/store/sample-menu.ts` + `public/sample/*.png` — café sample menu (Hot Drinks, Cold Drinks, Tea, Smoothies) with transparent drink photos (Higgsfield Z Image, backgrounds removed with rembg)
+
+### Charcoal & Ember (original default)
+**Vibe:** warm editorial food magazine — charcoal ink on soft neutral paper,
+one ember (terracotta-red) accent; light-first.
+
+Tokens and fonts live in the initial commit: `git show 950b389:src/app/globals.css`
+and `git show 950b389:src/app/layout.tsx`. Fonts: Instrument Serif (display),
+Schibsted Grotesk (body), Space Mono (label voice). Accent `#b5482f` light /
+`#d55f3f` evening; `themeColor` `#efece7`; initial theme `"light"` (falls back to
+`prefers-color-scheme`).
+
 ## 4. Provision data + images (free)
 - **Neon:** new project → copy the connection string (pooled) → this is `DATABASE_URL`.
   Also grab the **non-pooling** string for `DIRECT_URL`.

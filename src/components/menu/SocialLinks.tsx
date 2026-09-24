@@ -53,7 +53,7 @@ function IconLink({
 }) {
   const active = Boolean(href);
   const className =
-    "focus-ring grid h-11 w-11 place-items-center rounded-full border border-hairline bg-shell/60 text-ink-soft shadow-soft backdrop-blur-md transition-all hover:-translate-y-0.5 hover:bg-shell hover:text-ink";
+    "focus-ring grid h-11 w-11 place-items-center rounded-full border border-hairline bg-shell/60 text-ink-soft shadow-soft backdrop-blur-md transition-all ease-smooth-out hover:-translate-y-0.5 hover:bg-shell hover:text-ink";
 
   const icon = (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>

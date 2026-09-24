@@ -6,12 +6,13 @@ import { brand } from "@/brand.config";
 import PriceTag from "./PriceTag";
 import AddControl from "./AddControl";
 import { useLang } from "./LanguageContext";
+import { MOTION } from "@/lib/motion";
 
 /** Name, description, and price for the active dish. Crossfades on swipe. */
 export default function ItemDetails({ item }: { item: MenuItem }) {
   const reduce = useReducedMotion();
   const { pick, rtl } = useLang();
-  const dy = reduce ? 0 : 12;
+  const dy = reduce ? 0 : MOTION.distanceMedium;
   const desc = pick(item.description, item.descriptionAr);
 
   return (
@@ -19,10 +20,19 @@ export default function ItemDetails({ item }: { item: MenuItem }) {
       <AnimatePresence mode="wait">
         <motion.div
           key={item.id}
-          initial={{ opacity: 0, y: dy }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -dy }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          // Text reveal in; the exit is quicker and barely moves so it gets out of the way.
+          initial={{ opacity: 0, y: dy, filter: reduce ? "blur(0px)" : MOTION.blurMedium }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            transition: { duration: MOTION.verySlow, ease: "easeInOut" },
+          }}
+          exit={{
+            opacity: 0,
+            y: reduce ? 0 : -MOTION.distanceMicro,
+            transition: { duration: MOTION.quick, ease: "easeInOut" },
+          }}
         >
           <h1
             className={`font-display leading-[0.98] text-ink ${
