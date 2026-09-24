@@ -5,7 +5,7 @@ import { animate, useReducedMotion } from "framer-motion";
 import { splitOmr } from "@/lib/money";
 import { useLang } from "./LanguageContext";
 
-/** The price as a gallery label: monospace, understated, clay unit. Counts up. */
+/** The price as a menu-card label: humanist sans, tabular digits, gold unit. Counts up. */
 export default function PriceTag({ priceBaisa }: { priceBaisa: number }) {
   const { unit } = useLang();
   const reduce = useReducedMotion();
@@ -33,12 +33,12 @@ export default function PriceTag({ priceBaisa }: { priceBaisa: number }) {
       className="inline-flex items-baseline gap-2.5 border-b border-hairline pb-1.5"
       dir="ltr"
     >
-      <span className="font-mono text-4xl font-bold leading-none tracking-tight text-ink sm:text-5xl">
+      <span className="font-mono text-4xl font-light tabular-nums leading-none tracking-tight text-ink sm:text-5xl">
         {whole}
         <span className="text-ink-faint">.</span>
         <span className="text-2xl text-ink-soft sm:text-3xl">{fraction}</span>
       </span>
-      <span className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-saffron">
+      <span className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.24em] text-saffron">
         {unit}
       </span>
     </div>

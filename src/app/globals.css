@@ -1,41 +1,43 @@
 @import "tailwindcss";
 
 /*
-  RestMenu — "Charcoal & Ember" design system
-  An editorial food-magazine palette: warm charcoal ink on soft neutral paper,
-  with a single ember (terracotta-red) accent. Type leads with an editorial
-  serif + a monospace "gallery label" voice, and Arabic is a first-class
-  display face, not a translation. Dishes float free on the paper; no disc.
+  RestMenu — "The Parisian Bistro Moderne" design system
+  An upscale café menu card: dark-first "Bistro Night" (deep forest green,
+  matte emerald card, champagne-cream ink) with a light "Café Card" variant
+  (champagne parchment, forest-green ink). One champagne-gold accent, a sage
+  secondary. Type pairs a dramatic italic serif (Playfair Display) with a
+  classic humanist sans (Libre Franklin) for body, prices and spaced-caps
+  labels. Arabic stays a first-class display face, not a translation.
 */
 
 @theme {
-  /* Warm neutral paper */
-  --color-porcelain: #efece7;       /* paper */
-  --color-porcelain-deep: #e5e1d9;  /* paper, one step down */
-  --color-cream: #f7f4ee;           /* lightest paper */
-  --color-shell: #fbf8f3;           /* raised card surface */
+  /* Café Card — champagne parchment */
+  --color-porcelain: #F3EFEA;       /* champagne cream */
+  --color-porcelain-deep: #E9E3DA;
+  --color-cream: #F8F5F0;
+  --color-shell: #FCFAF6;           /* raised card surface */
 
-  /* Ink — warm charcoal, never pure #000 */
-  --color-ink: #1b1917;
-  --color-ink-soft: #57514a;
-  --color-ink-faint: #938b80;
+  /* Ink — forest green, never pure #000 */
+  --color-ink: #16231E;
+  --color-ink-soft: #47554E;
+  --color-ink-faint: #8A968D;
 
-  /* Accents. --color-saffron is the white-label primary (ember by default);
-     --color-indigo is the warm-grey secondary used for quiet labels/lines. */
-  --color-saffron: #b5482f;         /* ember (primary accent) */
-  --color-saffron-deep: #8f3720;
-  --color-clay: #b5482f;
-  --color-indigo: #5a5550;
-  --color-sage: #6f7b54;
+  /* Accents. --color-saffron is the white-label primary (champagne-gold);
+     --color-indigo is the sage secondary used for quiet labels/lines. */
+  --color-saffron: #9A7B3F;         /* deeper champagne-gold for cream contrast */
+  --color-saffron-deep: #7E6330;
+  --color-clay: #9A7B3F;
+  --color-indigo: #6E7C72;          /* muted sage-green */
+  --color-sage: #6E7C72;
 
   /* Lines & fills */
-  --color-hairline: rgba(27, 25, 23, 0.14);
-  --color-hairline-soft: rgba(27, 25, 23, 0.07);
+  --color-hairline: rgba(22, 35, 30, 0.16);
+  --color-hairline-soft: rgba(22, 35, 30, 0.08);
 
   --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono-face), ui-monospace, "SFMono-Regular", monospace;
-  --font-mono-face-fallback: ui-monospace, "SFMono-Regular", monospace;
+  /* The "label" voice (prices, eyebrows) is the humanist sans, set in spaced caps. */
+  --font-mono: var(--font-mono-face), ui-sans-serif, system-ui, sans-serif;
 
   --radius-pill: 999px;
 
@@ -50,6 +52,8 @@
 @layer base {
   :root {
     color-scheme: light;
+    /* Labels + prices use the humanist sans, not a monospace. */
+    --font-mono-face: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
   }
 
   html {
@@ -104,20 +108,21 @@
 
 /* Evening (dark) theme — scoped to whatever element carries data-theme="dark". */
 [data-theme="dark"] {
-  --color-porcelain: #131211;
-  --color-porcelain-deep: #181615;
-  --color-cream: #1a1817;
-  --color-shell: #201d1b;
-  --color-ink: #ece7df;
-  --color-ink-soft: #aaa093;
-  --color-ink-faint: #7c746a;
-  --color-saffron: #d55f3f;
-  --color-saffron-deep: #c04e30;
-  --color-clay: #d55f3f;
-  --color-indigo: #8a827a;
-  --color-sage: #9aa07e;
-  --color-hairline: rgba(255, 255, 255, 0.11);
-  --color-hairline-soft: rgba(255, 255, 255, 0.05);
+  /* Bistro Night — deep forest green, matte emerald card */
+  --color-porcelain: #16231E;
+  --color-porcelain-deep: #12201A;
+  --color-cream: #1B2C25;
+  --color-shell: #21362D;
+  --color-ink: #F3EFEA;             /* champagne cream */
+  --color-ink-soft: #C6CFC7;
+  --color-ink-faint: #94A3B8;       /* soft sage */
+  --color-saffron: #C7A96B;         /* champagne-gold */
+  --color-saffron-deep: #B4924E;
+  --color-clay: #C7A96B;
+  --color-indigo: #94A3B8;
+  --color-sage: #94A3B8;
+  --color-hairline: rgba(243, 239, 234, 0.16);
+  --color-hairline-soft: rgba(243, 239, 234, 0.08);
   color-scheme: dark;
 }
 [data-theme="dark"] .paper-grain::before {
@@ -126,8 +131,8 @@
 }
 
 /* Free-floating dish drop-shadow (traces the food via its alpha channel). */
-.dish-shadow { filter: drop-shadow(0 34px 38px rgba(20, 12, 4, 0.42)); }
-[data-theme="dark"] .dish-shadow { filter: drop-shadow(0 38px 46px rgba(0, 0, 0, 0.6)); }
+.dish-shadow { filter: drop-shadow(0 34px 38px rgba(12, 22, 18, 0.38)); }
+[data-theme="dark"] .dish-shadow { filter: drop-shadow(0 38px 46px rgba(4, 10, 8, 0.62)); }
 
 /* Rising steam for hot items */
 @keyframes steamRise {
@@ -142,7 +147,7 @@
   --font-sans: var(--font-tajawal), ui-sans-serif, system-ui, sans-serif;
 }
 .lang-ar :is(h1, h2, h3, h4) { line-height: 1.2; }
-/* Latin bits inside an Arabic layout (prices, paging) keep the mono voice. */
+/* Latin bits inside an Arabic layout (prices, paging) keep the Latin label voice. */
 .lang-ar .font-mono { font-family: var(--font-mono-face); }
 
 /* Admin form input */
@@ -174,6 +179,25 @@
   mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
+}
+
+/* The printed-card frame: a hairline rule around the whole screen, with a
+   fainter champagne-gold inner rule like a letterpress menu card.
+   Inset 0.75rem (1.25rem from sm up), pushed clear of notches/home bars. */
+.card-frame {
+  --frame-inset: 0.75rem;
+  top: max(var(--frame-inset), env(safe-area-inset-top));
+  right: max(var(--frame-inset), env(safe-area-inset-right));
+  bottom: max(var(--frame-inset), env(safe-area-inset-bottom));
+  left: max(var(--frame-inset), env(safe-area-inset-left));
+  border: 1px solid color-mix(in srgb, var(--color-ink) 22%, transparent);
+}
+@media (min-width: 40rem) { .card-frame { --frame-inset: 1.25rem; } }
+.card-frame::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid color-mix(in srgb, var(--color-saffron) 30%, transparent);
 }
 
 /* Focus ring — accessible + on-brand */

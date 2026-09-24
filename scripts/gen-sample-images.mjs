@@ -1,7 +1,7 @@
 /*
  * Generates the placeholder dish images that ship with the template.
- * They are transparent top-down "plated dish" illustrations in the Muscat
- * Gallery palette, so they float correctly in the free-floating menu layout.
+ * They are transparent top-down "plated dish" illustrations on white bistro
+ * china with a champagne-gold rim band (Parisian Bistro Moderne palette), so they float correctly in the free-floating menu layout.
  * Real clients replace these by uploading transparent PNG photos in the admin.
  *
  *   node scripts/gen-sample-images.mjs
@@ -75,9 +75,11 @@ function svg(name, tones) {
   </defs>
   <!-- transparent background: only the plate is drawn, so it floats -->
   <circle cx="300" cy="300" r="252" fill="url(#plate)"/>
-  <circle cx="300" cy="300" r="252" fill="none" stroke="rgba(26,25,22,0.10)" stroke-width="2"/>
+  <circle cx="300" cy="300" r="252" fill="none" stroke="rgba(22,35,30,0.12)" stroke-width="2"/>
+  <circle cx="300" cy="300" r="238" fill="none" stroke="#C7A96B" stroke-opacity="0.75" stroke-width="2.5"/>
+  <circle cx="300" cy="300" r="232" fill="none" stroke="#C7A96B" stroke-opacity="0.45" stroke-width="1"/>
   <circle cx="300" cy="298" r="196" fill="url(#well)"/>
-  <circle cx="300" cy="298" r="196" fill="none" stroke="rgba(26,25,22,0.06)" stroke-width="2"/>
+  <circle cx="300" cy="298" r="196" fill="none" stroke="rgba(22,35,30,0.07)" stroke-width="2"/>
   <g>${food.join("")}</g>
 </svg>`;
 }

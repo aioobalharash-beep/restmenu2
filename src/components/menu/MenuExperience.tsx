@@ -14,13 +14,14 @@ import { CartProvider } from "./CartContext";
 import { brand } from "@/brand.config";
 
 // Each course gets its own ambient hue, cross-faded as you scroll — kept faint
-// so the spotlight behind each dish stays the star. Warm tones only.
+// so the spotlight behind each dish stays the star. Sage, champagne-gold and
+// forest tones only.
 const HUES = [
   "var(--color-saffron)",
-  "#a9772f",
+  "#8FA39A",
+  "#B89B5E",
+  "#2F5A48",
   "var(--color-sage)",
-  "#9c5a44",
-  "#7a6a5c",
 ];
 
 /** Public entry: provides language (and, when enabled, cart) context. */
@@ -39,20 +40,17 @@ function MenuShell({ menu }: { menu: Menu }) {
   const sceneRefs = useRef<(HTMLElement | null)[]>([]);
   const ratios = useRef<number[]>(menu.map(() => 0));
   const [active, setActive] = useState(0);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  // Dark-first brand: the evening card is the default look.
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
-  // Restore / detect theme.
+  // Restore a guest's saved choice.
   useEffect(() => {
     try {
       const s = localStorage.getItem("rm_theme");
-      if (s === "light" || s === "dark") {
-        setTheme(s);
-        return;
-      }
+      if (s === "light" || s === "dark") setTheme(s);
     } catch {
       /* ignore */
     }
-    if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) setTheme("dark");
   }, []);
 
   const toggleTheme = useCallback(() => {
@@ -142,6 +140,9 @@ function MenuShell({ menu }: { menu: Menu }) {
           />
         </AnimatePresence>
       </div>
+
+      {/* The printed-card frame — above the page, below chrome/intro/modals, never clickable */}
+      <div aria-hidden className="card-frame pointer-events-none fixed z-30" />
 
       <IntroOverlay />
       <FloatingLogo />

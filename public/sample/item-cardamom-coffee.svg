@@ -12,8 +12,10 @@
   </defs>
   <!-- transparent background: only the plate is drawn, so it floats -->
   <circle cx="300" cy="300" r="252" fill="url(#plate)"/>
-  <circle cx="300" cy="300" r="252" fill="none" stroke="rgba(26,25,22,0.10)" stroke-width="2"/>
+  <circle cx="300" cy="300" r="252" fill="none" stroke="rgba(22,35,30,0.12)" stroke-width="2"/>
+  <circle cx="300" cy="300" r="238" fill="none" stroke="#C7A96B" stroke-opacity="0.75" stroke-width="2.5"/>
+  <circle cx="300" cy="300" r="232" fill="none" stroke="#C7A96B" stroke-opacity="0.45" stroke-width="1"/>
   <circle cx="300" cy="298" r="196" fill="url(#well)"/>
-  <circle cx="300" cy="298" r="196" fill="none" stroke="rgba(26,25,22,0.06)" stroke-width="2"/>
+  <circle cx="300" cy="298" r="196" fill="none" stroke="rgba(22,35,30,0.07)" stroke-width="2"/>
   <g><g opacity="0.87"><circle cx="325.3" cy="229.9" r="48.1" fill="#e9dfce"/><circle cx="356.3" cy="270.5" r="65.1" fill="#e9dfce"/><circle cx="341.7" cy="249.5" r="50.1" fill="#e9dfce"/><circle cx="359.3" cy="244.9" r="57.2" fill="#e9dfce"/><circle cx="313.9" cy="255.0" r="70.3" fill="#e9dfce"/></g><g opacity="0.95"><circle cx="283.5" cy="300.2" r="47.1" fill="#3c2216"/><circle cx="282.8" cy="319.1" r="27.1" fill="#3c2216"/><circle cx="277.5" cy="285.8" r="42.6" fill="#3c2216"/><circle cx="270.8" cy="279.2" r="43.7" fill="#3c2216"/></g><g opacity="0.98"><circle cx="251.0" cy="275.3" r="30.5" fill="#e9dfce"/><circle cx="221.5" cy="248.0" r="46.0" fill="#e9dfce"/><circle cx="242.2" cy="262.4" r="47.5" fill="#e9dfce"/><circle cx="236.5" cy="253.1" r="35.9" fill="#e9dfce"/></g><g opacity="0.90"><circle cx="404.9" cy="270.9" r="24.6" fill="#3c2216"/><circle cx="409.3" cy="247.4" r="28.4" fill="#3c2216"/><circle cx="396.0" cy="244.1" r="41.7" fill="#3c2216"/></g><g opacity="0.95"><circle cx="255.3" cy="279.0" r="61.9" fill="#3c2216"/><circle cx="242.8" cy="253.4" r="57.0" fill="#3c2216"/><circle cx="271.6" cy="286.2" r="39.1" fill="#3c2216"/><circle cx="239.3" cy="269.6" r="62.8" fill="#3c2216"/></g></g>
 </svg>
