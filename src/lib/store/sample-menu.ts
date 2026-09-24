@@ -9,158 +9,113 @@ import type { Menu } from "@/lib/types";
  */
 export const sampleMenu: Menu = [
   {
-    id: "cat-appetisers",
-    name: "Appetisers",
-    nameAr: "المقبّلات",
-    kicker: null,
-    position: 0,
-    items: [
-      {
-        id: "item-burrata",
-        name: "Burrata & Heirloom Tomato",
-        nameAr: "بوراتا وطماطم هيرلوم",
-        description:
-          "Creamy Puglian burrata, sun-ripened heirloom tomatoes, basil oil, and a whisper of aged balsamic.",
-        descriptionAr:
-          "جبن بوراتا كريمي من بوليا، طماطم هيرلوم ناضجة، زيت الريحان، ولمسة من الخل البلسمي المعتّق.",
-        priceBaisa: 4900,
-        imageUrl: "/sample/item-burrata.svg",
-        position: 0,
-      },
-      {
-        id: "item-scallops",
-        name: "Seared Scallops",
-        nameAr: "إسكالوب محمّر",
-        description:
-          "Hand-dived scallops, cauliflower velouté, brown butter, and toasted hazelnut.",
-        descriptionAr:
-          "إسكالوب مصطاد يدويًا، كريمة القرنبيط، زبدة بنّية، وبندق محمّص.",
-        priceBaisa: 6500,
-        imageUrl: "/sample/item-scallops.svg",
-        position: 1,
-      },
-      {
-        id: "item-beetroot",
-        name: "Roasted Beetroot",
-        nameAr: "شمندر محمّص",
-        description:
-          "Candied golden and crimson beets, whipped goat cheese, orange, and pistachio dukkah.",
-        descriptionAr:
-          "شمندر ذهبي وأحمر مكرمل، جبن ماعز مخفوق، برتقال، ودُقّة الفستق.",
-        priceBaisa: 3800,
-        imageUrl: "/sample/item-beetroot.svg",
-        position: 2,
-      },
-    ],
-  },
-  {
-    id: "cat-main",
-    name: "Main Dishes",
-    nameAr: "الأطباق الرئيسية",
-    kicker: null,
-    position: 1,
-    items: [
-      {
-        id: "item-ribeye",
-        name: "Dry-Aged Ribeye",
-        nameAr: "ريب آي معتّق",
-        description:
-          "42-day dry-aged ribeye, bone marrow butter, charred shallot, and triple-cooked chips.",
-        descriptionAr:
-          "ريب آي معتّق ٤٢ يومًا، زبدة نخاع العظم، بصل مشوي، وبطاطس مقلية ثلاث مرّات.",
-        priceBaisa: 18500,
-        imageUrl: "/sample/item-ribeye.svg",
-        position: 0,
-      },
-      {
-        id: "item-seabass",
-        name: "Wild Sea Bass",
-        nameAr: "قاروص بري",
-        description:
-          "Line-caught sea bass, saffron mussel broth, fennel, and confit fingerling potatoes.",
-        descriptionAr:
-          "سمك قاروص مصطاد بالصنّارة، مرق بلح البحر بالزعفران، شمر، وبطاطس كونفي.",
-        priceBaisa: 14000,
-        imageUrl: "/sample/item-seabass.svg",
-        position: 1,
-      },
-      {
-        id: "item-risotto",
-        name: "Wild Mushroom Risotto",
-        nameAr: "ريزوتو الفطر البري",
-        description:
-          "Carnaroli rice, wild forest mushrooms, aged parmesan, truffle, and a soft herb oil.",
-        descriptionAr:
-          "أرز كارنارولي، فطر الغابة البري، جبن بارميزان معتّق، كمأة، وزيت أعشاب.",
-        priceBaisa: 9500,
-        imageUrl: "/sample/item-risotto.svg",
-        position: 2,
-      },
-    ],
-  },
-  {
-    id: "cat-rice",
-    name: "Rice Meals",
-    nameAr: "أطباق الأرز",
-    kicker: null,
-    position: 2,
-    items: [
-      {
-        id: "item-biryani",
-        name: "Lamb Biryani",
-        nameAr: "برياني اللحم",
-        description:
-          "Fragrant basmati layered with slow-braised lamb shank, saffron, fried onion, and mint yoghurt.",
-        descriptionAr:
-          "أرز بسمتي معطّر بطبقات من لحم الضأن المطهو ببطء، زعفران، بصل مقلي، ولبن بالنعناع.",
-        priceBaisa: 8900,
-        imageUrl: "/sample/item-biryani.svg",
-        position: 0,
-      },
-      {
-        id: "item-machboos",
-        name: "Prawn Machboos",
-        nameAr: "مجبوس الروبيان",
-        description:
-          "Omani-spiced rice with tiger prawns, dried lime, tomato, and a warm baharat blend.",
-        descriptionAr:
-          "أرز بالتوابل العُمانية مع روبيان النمر، لومي، طماطم، وخلطة بهارات دافئة.",
-        priceBaisa: 10500,
-        imageUrl: "/sample/item-machboos.svg",
-        position: 1,
-      },
-    ],
-  },
-  {
     id: "cat-hot-drinks",
     name: "Hot Drinks",
     nameAr: "المشروبات الساخنة",
     kicker: null,
-    position: 3,
+    position: 0,
     items: [
       {
-        id: "item-cardamom-coffee",
-        name: "Omani Cardamom Coffee",
-        nameAr: "قهوة عُمانية بالهيل",
+        id: "item-espresso",
+        name: "Espresso",
+        nameAr: "إسبريسو",
         description:
-          "Lightly roasted Arabica infused with green cardamom, served with a date on the side.",
+          "A short, dense shot of our house blend — dark chocolate, toasted almond and a lingering crema.",
         descriptionAr:
-          "بُن عربي محمّص قليلًا منقوع بالهيل الأخضر، يُقدَّم مع تمرة.",
-        priceBaisa: 2200,
-        imageUrl: "/sample/item-cardamom-coffee.svg",
+          "جرعة قصيرة مركّزة من خلطتنا الخاصة — شوكولاتة داكنة، لوز محمّص، وكريما تدوم.",
+        priceBaisa: 1400,
+        imageUrl: "/sample/item-espresso.png",
         position: 0,
       },
       {
-        id: "item-saffron-latte",
-        name: "Saffron & Rose Latte",
-        nameAr: "لاتيه الزعفران والورد",
+        id: "item-cafe-creme",
+        name: "Café Crème",
+        nameAr: "كافيه كريم",
         description:
-          "Steamed milk, a thread of saffron, rose water, and raw honey. Gentle and aromatic.",
+          "The Parisian morning classic: espresso lengthened with silky steamed milk and a fine leaf of foam.",
         descriptionAr:
-          "حليب مبخّر، خيط من الزعفران، ماء الورد، وعسل خام. لطيف وعطري.",
-        priceBaisa: 2800,
-        imageUrl: "/sample/item-saffron-latte.svg",
+          "كلاسيكية الصباح الباريسي: إسبريسو مع حليب مبخّر حريري وورقة رقيقة من الرغوة.",
+        priceBaisa: 2200,
+        imageUrl: "/sample/item-cafe-creme.png",
         position: 1,
+      },
+      {
+        id: "item-chocolat-chaud",
+        name: "Chocolat Chaud",
+        nameAr: "شوكولاتة ساخنة",
+        description:
+          "Thick, glossy hot chocolate melted from 70% dark chocolate, crowned with a spoon of Chantilly.",
+        descriptionAr:
+          "شوكولاتة ساخنة كثيفة ولامعة من شوكولاتة داكنة ٧٠٪، تعلوها ملعقة من كريمة شانتيي.",
+        priceBaisa: 2600,
+        imageUrl: "/sample/item-chocolat-chaud.png",
+        position: 2,
+      },
+    ],
+  },
+  {
+    id: "cat-cold-drinks",
+    name: "Cold Drinks",
+    nameAr: "المشروبات الباردة",
+    kicker: null,
+    position: 1,
+    items: [
+      {
+        id: "item-iced-latte",
+        name: "Iced Latte",
+        nameAr: "لاتيه مثلّج",
+        description:
+          "Double espresso poured over cold milk and ice, left to swirl.",
+        descriptionAr:
+          "جرعتا إسبريسو تُسكبان فوق الحليب البارد والثلج، تتمازج على مهل.",
+        priceBaisa: 2400,
+        imageUrl: "/sample/item-iced-latte.png",
+        position: 0,
+      },
+      {
+        id: "item-citronnade",
+        name: "Citronnade",
+        nameAr: "سيترونـاد",
+        description:
+          "Fresh-pressed French lemonade, lightly sweet, with lemon and garden mint.",
+        descriptionAr:
+          "ليموناضة فرنسية معصورة طازجة، قليلة الحلاوة، بالليمون والنعناع.",
+        priceBaisa: 2000,
+        imageUrl: "/sample/item-citronnade.png",
+        position: 1,
+      },
+      {
+        id: "item-cold-brew-tonic",
+        name: "Cold Brew Tonic",
+        nameAr: "كولد برو تونيك",
+        description:
+          "Eighteen-hour cold brew floated over sparkling tonic with a twist of orange.",
+        descriptionAr:
+          "قهوة مُحضّرة على البارد لثماني عشرة ساعة فوق ماء التونيك الفوّار مع قشر البرتقال.",
+        priceBaisa: 2600,
+        imageUrl: "/sample/item-cold-brew-tonic.png",
+        position: 2,
+      },
+    ],
+  },
+  {
+    id: "cat-tea",
+    name: "Tea",
+    nameAr: "الشاي",
+    kicker: null,
+    position: 2,
+    items: [
+      {
+        id: "item-earl-grey",
+        name: "Earl Grey",
+        nameAr: "إيرل غراي",
+        description:
+          "Black tea scented with bergamot, served with a slice of lemon.",
+        descriptionAr:
+          "شاي أسود معطّر بالبرغموت، يُقدَّم مع شريحة ليمون.",
+        priceBaisa: 1600,
+        imageUrl: "/sample/item-earl-grey.png",
+        position: 0,
       },
       {
         id: "item-mint-tea",
@@ -171,7 +126,64 @@ export const sampleMenu: Menu = [
         descriptionAr:
           "شاي أخضر بارود منقوع بالنعناع الطازج، يُسكب عاليًا ومحلّى.",
         priceBaisa: 1800,
-        imageUrl: "/sample/item-mint-tea.svg",
+        imageUrl: "/sample/item-mint-tea.png",
+        position: 1,
+      },
+      {
+        id: "item-matcha-latte",
+        name: "Matcha Latte",
+        nameAr: "ماتشا لاتيه",
+        description:
+          "Ceremonial-grade matcha whisked with steamed milk — grassy, creamy, calm.",
+        descriptionAr:
+          "ماتشا فاخرة مخفوقة مع حليب مبخّر — عشبية، كريمية، وهادئة.",
+        priceBaisa: 2500,
+        imageUrl: "/sample/item-matcha-latte.png",
+        position: 2,
+      },
+    ],
+  },
+  {
+    id: "cat-smoothies",
+    name: "Smoothies",
+    nameAr: "السموذي",
+    kicker: null,
+    position: 3,
+    items: [
+      {
+        id: "item-berry-smoothie",
+        name: "Berry Smoothie",
+        nameAr: "سموذي التوت",
+        description:
+          "Raspberry, blueberry and strawberry blended with yoghurt and a little honey.",
+        descriptionAr:
+          "توت العليق والتوت الأزرق والفراولة مخفوقة مع اللبن وقليل من العسل.",
+        priceBaisa: 2800,
+        imageUrl: "/sample/item-berry-smoothie.png",
+        position: 0,
+      },
+      {
+        id: "item-mango-passion",
+        name: "Mango & Passion Fruit",
+        nameAr: "مانجو وباشن فروت",
+        description:
+          "Ripe mango and tangy passion fruit, blended thick and sunny.",
+        descriptionAr:
+          "مانجو ناضجة وباشن فروت منعش، مخفوقة كثيفة ومشمسة.",
+        priceBaisa: 2800,
+        imageUrl: "/sample/item-mango-passion.png",
+        position: 1,
+      },
+      {
+        id: "item-green-smoothie",
+        name: "Green Smoothie",
+        nameAr: "سموذي أخضر",
+        description:
+          "Spinach, green apple, banana and fresh ginger, finished with chia.",
+        descriptionAr:
+          "سبانخ وتفاح أخضر وموز وزنجبيل طازج، مع بذور الشيا.",
+        priceBaisa: 2700,
+        imageUrl: "/sample/item-green-smoothie.png",
         position: 2,
       },
     ],

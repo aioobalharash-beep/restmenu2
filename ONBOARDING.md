@@ -128,7 +128,7 @@ accentDeep: "",
 - `src/components/menu/PriceTag.tsx` — light-weight tabular price, spaced-caps unit
 - `src/components/menu/FloatingLogo.tsx`, `TopControls.tsx` — inset inside the frame
 - `src/components/menu/DishImage.tsx` — shadow tint
-- `scripts/gen-sample-images.mjs` → `public/sample/*.svg` — gold plate rim (re-run `node scripts/gen-sample-images.mjs`)
+- `src/lib/store/sample-menu.ts` + `public/sample/*.png` — café sample menu (Hot Drinks, Cold Drinks, Tea, Smoothies) with transparent drink photos (Higgsfield Z Image, backgrounds removed with rembg)
 
 ### Charcoal & Ember (original default)
 **Vibe:** warm editorial food magazine — charcoal ink on soft neutral paper,
