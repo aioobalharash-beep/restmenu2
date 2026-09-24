@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+/*
+  RestMenu — "Charcoal & Ember" design system
+  An editorial food-magazine palette: warm charcoal ink on soft neutral paper,
+  with a single ember (terracotta-red) accent. Type leads with an editorial
+  serif + a monospace "gallery label" voice, and Arabic is a first-class
+  display face, not a translation. Dishes float free on the paper; no disc.
+*/
+
+@theme {
+  /* Warm neutral paper */
+  --color-porcelain: #efece7;       /* paper */
+  --color-porcelain-deep: #e5e1d9;  /* paper, one step down */
+  --color-cream: #f7f4ee;           /* lightest paper */
+  --color-shell: #fbf8f3;           /* raised card surface */
+
+  /* Ink — warm charcoal, never pure #000 */
+  --color-ink: #1b1917;
+  --color-ink-soft: #57514a;
+  --color-ink-faint: #938b80;
+
+  /* Accents. --color-saffron is the white-label primary (ember by default);
+     --color-indigo is the warm-grey secondary used for quiet labels/lines. */
+  --color-saffron: #b5482f;         /* ember (primary accent) */
+  --color-saffron-deep: #8f3720;
+  --color-clay: #b5482f;
+  --color-indigo: #5a5550;
+  --color-sage: #6f7b54;
+
+  /* Lines & fills */
+  --color-hairline: rgba(27, 25, 23, 0.14);
+  --color-hairline-soft: rgba(27, 25, 23, 0.07);
+
+  --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, "SFMono-Regular", monospace;
+  --font-mono-face-fallback: ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-pill: 999px;
+
+  --shadow-float: 0 40px 80px -30px rgba(20, 12, 4, 0.42);
+  --shadow-lift: 0 20px 45px -20px rgba(20, 12, 4, 0.30);
+  --shadow-soft: 0 8px 24px -12px rgba(20, 12, 4, 0.22);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-porcelain);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-saffron) 26%, transparent);
+    color: var(--color-ink);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--color-ink) 14%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--color-ink) 24%, transparent);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+  }
+}
+
+/* ---------- Utilities ---------- */
+
+.text-balance { text-wrap: balance; }
+.text-pretty { text-wrap: pretty; }
+
+.hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+.font-display { font-family: var(--font-display); }
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono-face); }
+
+/* Evening (dark) theme — scoped to whatever element carries data-theme="dark". */
+[data-theme="dark"] {
+  --color-porcelain: #131211;
+  --color-porcelain-deep: #181615;
+  --color-cream: #1a1817;
+  --color-shell: #201d1b;
+  --color-ink: #ece7df;
+  --color-ink-soft: #aaa093;
+  --color-ink-faint: #7c746a;
+  --color-saffron: #d55f3f;
+  --color-saffron-deep: #c04e30;
+  --color-clay: #d55f3f;
+  --color-indigo: #8a827a;
+  --color-sage: #9aa07e;
+  --color-hairline: rgba(255, 255, 255, 0.11);
+  --color-hairline-soft: rgba(255, 255, 255, 0.05);
+  color-scheme: dark;
+}
+[data-theme="dark"] .paper-grain::before {
+  mix-blend-mode: screen;
+  opacity: 0.05;
+}
+
+/* Free-floating dish drop-shadow (traces the food via its alpha channel). */
+.dish-shadow { filter: drop-shadow(0 34px 38px rgba(20, 12, 4, 0.42)); }
+[data-theme="dark"] .dish-shadow { filter: drop-shadow(0 38px 46px rgba(0, 0, 0, 0.6)); }
+
+/* Rising steam for hot items */
+@keyframes steamRise {
+  0% { transform: translateY(0) scaleX(0.9); opacity: 0; }
+  25% { opacity: 0.55; }
+  100% { transform: translateY(-64px) scaleX(1.7); opacity: 0; }
+}
+
+/* Arabic: swap the display/body fonts for the whole subtree. */
+.lang-ar {
+  --font-display: var(--font-ar-display), "Times New Roman", serif;
+  --font-sans: var(--font-tajawal), ui-sans-serif, system-ui, sans-serif;
+}
+.lang-ar :is(h1, h2, h3, h4) { line-height: 1.2; }
+/* Latin bits inside an Arabic layout (prices, paging) keep the mono voice. */
+.lang-ar .font-mono { font-family: var(--font-mono-face); }
+
+/* Admin form input */
+.input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-hairline);
+  background: var(--color-shell);
+  padding: 0.7rem 1rem;
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.input::placeholder { color: var(--color-ink-faint); }
+.input:focus-visible {
+  border-color: var(--color-saffron);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-saffron) 22%, transparent);
+}
+
+/* Grain / paper texture overlay (very subtle) */
+.paper-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Focus ring — accessible + on-brand */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-saffron);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
