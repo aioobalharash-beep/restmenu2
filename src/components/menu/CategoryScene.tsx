@@ -8,10 +8,6 @@ import CourseIndex from "./CourseIndex";
 import ScrollCue from "./ScrollCue";
 import { useLang } from "./LanguageContext";
 
-const AR_DIGITS = "٠١٢٣٤٥٦٧٨٩";
-const pad = (n: number) => String(n).padStart(2, "0");
-const toArabicDigits = (s: string) => s.replace(/\d/g, (d) => AR_DIGITS[Number(d)]);
-
 /** One full-height editorial spread: a course, its copy, and its floating dishes. */
 const CategoryScene = forwardRef<
   HTMLElement,
@@ -34,7 +30,6 @@ const CategoryScene = forwardRef<
   const item = items[index] ?? items[0];
 
   const catName = pick(category.name, category.nameAr);
-  const issueNo = pad(sceneIndex + 1);
 
   // Heuristic: show steam for hot categories (drinks/soups), EN or AR — never cold ones.
   const catText = `${category.name} ${category.nameAr ?? ""}`;
@@ -58,24 +53,16 @@ const CategoryScene = forwardRef<
         {catName}
       </span>
 
-      {/* Running header: an editorial issue label — "No. 04 — Appetizers" */}
+      {/* Running header: the category name exactly as entered in the admin
+          (owners who want an issue number type it into the name). */}
       <div className="relative z-10 text-center">
         <span className={`text-indigo ${rtl ? "text-[0.95rem]" : "font-mono text-[0.68rem] uppercase tracking-[0.34em]"}`}>
-          {rtl ? (
-            <>رقم {toArabicDigits(issueNo)} — {catName}</>
-          ) : (
-            <>
-              <span className="font-display text-[0.95rem] normal-case italic tracking-normal">No.</span>{" "}
-              <span className="tabular-nums">{issueNo}</span>
-              <span className="mx-2 text-saffron">—</span>
-              {catName}
-            </>
-          )}
+          {catName}
         </span>
       </div>
 
       {/* Stage */}
-      <div className="relative z-10 grid flex-1 items-center gap-x-8 gap-y-4 md:grid-cols-[0.92fr_1.3fr] lg:gap-x-12">
+      <div className="relative z-10 grid flex-1 content-start items-center gap-x-8 gap-y-3 md:grid-cols-[0.92fr_1.3fr] md:content-center md:gap-y-4 lg:gap-x-12">
         {/* Copy */}
         <div className="order-2 md:order-1">
           {item ? (

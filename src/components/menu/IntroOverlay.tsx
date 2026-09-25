@@ -1,29 +1,36 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { brand } from "@/brand.config";
+
+// Runs before paint on the client; falls back to useEffect during SSR.
+const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 /** A one-time cinematic brand reveal on first load (per session). */
 export default function IntroOverlay() {
   const reduce = useReducedMotion();
-  const [show, setShow] = useState(false);
+  // Start visible so the very first paint is the loader, never the menu.
+  const [show, setShow] = useState(true);
 
-  useEffect(() => {
+  useIsoLayoutEffect(() => {
     let seen = false;
     try {
       seen = sessionStorage.getItem("rm_intro") === "1";
     } catch {
       /* ignore */
     }
-    if (seen || reduce) return;
-    setShow(true);
+    // Repeat visit / reduced motion: drop the overlay before paint.
+    if (seen || reduce) {
+      setShow(false);
+      return;
+    }
     try {
       sessionStorage.setItem("rm_intro", "1");
     } catch {
       /* ignore */
     }
-    const t = setTimeout(() => setShow(false), 2000);
+    const t = setTimeout(() => setShow(false), 1900);
     return () => clearTimeout(t);
   }, [reduce]);
 
@@ -31,14 +38,14 @@ export default function IntroOverlay() {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed inset-0 z-[60] grid place-items-center"
+          className="fixed inset-0 z-[60] grid place-items-center px-6 text-center"
           style={{ background: "var(--color-porcelain)" }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           onClick={() => setShow(false)}
         >
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex max-w-[86vw] flex-col items-center gap-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.82, y: 6 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -47,9 +54,9 @@ export default function IntroOverlay() {
             >
               {brand.logo ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={brand.logo} alt={brand.name} className="h-16 w-auto max-w-[240px] object-contain" />
+                <img src={brand.logo} alt={brand.name} className="h-16 w-auto max-w-[220px] object-contain" />
               ) : (
-                <span className="font-display text-[2.6rem] leading-none tracking-tight text-ink">
+                <span className="text-balance font-display text-[clamp(1.8rem,7vw,2.8rem)] leading-tight tracking-tight text-ink">
                   {brand.name}
                   {brand.tagline && <span className="italic text-saffron"> · {brand.tagline}</span>}
                 </span>
