@@ -6,6 +6,7 @@ import {
   Tajawal,
 } from "next/font/google";
 import { brand } from "@/brand.config";
+import { THEMES } from "@/themes";
 import "./globals.css";
 
 // Dramatic wide serif (with its italic) for headers, dish names + course numerals.
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#16231E",
+  themeColor: THEMES[brand.theme].themeColor,
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -71,6 +72,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${serif.variable} ${humanist.variable} ${arDisplay.variable} ${tajawal.variable}`}
+      data-brand={brand.theme}
       style={brandVars}
     >
       <body>{children}</body>

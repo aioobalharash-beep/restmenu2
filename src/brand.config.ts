@@ -12,11 +12,17 @@
  *  4. contact          → location / Instagram / WhatsApp for the footer.
  *                        (Env vars NEXT_PUBLIC_* override these if set.)
  *
+ *  5. theme            → visual preset from src/themes ("bistro" = default).
+ *
  *  Favicon: drop a file at  src/app/icon.png  to override the tab icon.
  *
  *  Then push & deploy. Nothing else in the codebase needs to change.
  */
+import type { ThemeId } from "@/themes";
+
 export type Brand = {
+  /** Visual preset from src/themes (fonts, palette, signature details). */
+  theme: ThemeId;
   name: string;
   tagline: string;
   logo: string | null;
@@ -37,6 +43,7 @@ export type Brand = {
 };
 
 export const brand: Brand = {
+  theme: "bistro",
   name: "Café Moderne",
   tagline: "carte du jour",
   logo: null,

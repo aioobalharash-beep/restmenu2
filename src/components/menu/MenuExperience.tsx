@@ -12,17 +12,11 @@ import CartWidget from "./CartWidget";
 import { LanguageProvider, useLang } from "./LanguageContext";
 import { CartProvider } from "./CartContext";
 import { brand } from "@/brand.config";
+import { THEMES } from "@/themes";
 
-// Each course gets its own ambient hue, cross-faded as you scroll — kept faint
-// so the spotlight behind each dish stays the star. Sage, champagne-gold and
-// forest tones only.
-const HUES = [
-  "var(--color-saffron)",
-  "#8FA39A",
-  "#B89B5E",
-  "#2F5A48",
-  "var(--color-sage)",
-];
+// Each course gets its own ambient hue (from the theme preset), cross-faded as
+// you scroll — kept faint so the spotlight behind each dish stays the star.
+const { hues: HUES, defaultMode } = THEMES[brand.theme];
 
 /** Public entry: provides language (and, when enabled, cart) context. */
 export default function MenuExperience({ menu }: { menu: Menu }) {
@@ -40,8 +34,8 @@ function MenuShell({ menu }: { menu: Menu }) {
   const sceneRefs = useRef<(HTMLElement | null)[]>([]);
   const ratios = useRef<number[]>(menu.map(() => 0));
   const [active, setActive] = useState(0);
-  // Dark-first brand: the evening card is the default look.
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  // The theme preset decides the first-visit mode (bistro is dark-first).
+  const [theme, setTheme] = useState<"light" | "dark">(defaultMode);
 
   // Restore a guest's saved choice.
   useEffect(() => {

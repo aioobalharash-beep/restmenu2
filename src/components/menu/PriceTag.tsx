@@ -30,15 +30,15 @@ export default function PriceTag({ priceBaisa }: { priceBaisa: number }) {
   const { whole, fraction } = splitOmr(Math.round(display));
   return (
     <div
-      className="inline-flex items-baseline gap-2.5 border-b border-hairline pb-1.5"
+      className="price-tag inline-flex items-baseline gap-2.5 border-b border-hairline pb-1.5"
       dir="ltr"
     >
-      <span className="font-mono text-4xl font-light tabular-nums leading-none tracking-tight text-ink sm:text-5xl">
+      <span className="price-amount font-mono text-4xl font-light tabular-nums leading-none tracking-tight text-ink sm:text-5xl">
         {whole}
-        <span className="text-ink-faint">.</span>
-        <span className="text-2xl text-ink-soft sm:text-3xl">{fraction}</span>
+        <span className="price-dot text-ink-faint">.</span>
+        <span className="price-fraction text-2xl text-ink-soft sm:text-3xl">{fraction}</span>
       </span>
-      <span className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.24em] text-saffron">
+      <span className="price-unit font-mono text-[0.68rem] font-medium uppercase tracking-[0.24em] text-saffron">
         {unit}
       </span>
     </div>

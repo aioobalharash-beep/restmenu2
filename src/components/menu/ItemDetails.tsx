@@ -35,7 +35,7 @@ export default function ItemDetails({ item }: { item: MenuItem }) {
           }}
         >
           <h1
-            className={`font-display leading-[0.98] text-ink ${
+            className={`dish-name font-display leading-[0.98] text-ink ${
               rtl
                 ? "text-[clamp(3rem,7vw,5.2rem)]"
                 : "italic text-[clamp(2.3rem,6vw,4.9rem)] tracking-[-0.01em]"

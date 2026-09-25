@@ -66,6 +66,18 @@ export default function ItemSwiper({
 
       {/* Coverflow stage — overflow visible so neighbours peek at the edges */}
       <div className="relative mx-auto flex aspect-square w-[min(66vw,34dvh)] md:w-[min(52dvh,32rem)] items-center justify-center [overflow:visible]">
+        {/* Signature accent slot — hidden unless the theme preset shows it */}
+        <svg
+          aria-hidden
+          viewBox="0 0 24 24"
+          className="star-accent pointer-events-none absolute top-[2%] z-30 h-[16%] w-[16%]"
+          style={{ insetInlineEnd: "4%" }}
+        >
+          <path
+            d="M12 2.6l2.8 6.1 6.6.7-4.9 4.5 1.4 6.5L12 17.1l-5.9 3.3 1.4-6.5-4.9-4.5 6.6-.7z"
+            strokeLinejoin="round"
+          />
+        </svg>
         {items.map((item, i) => {
           // Shortest signed distance (wraps around for a full stage).
           let d = i - index;

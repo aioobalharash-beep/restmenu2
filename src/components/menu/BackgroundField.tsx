@@ -9,13 +9,7 @@ export default function BackgroundField() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       {/* Base wash */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(130% 100% at 50% -20%, var(--color-cream) 0%, var(--color-porcelain) 52%, var(--color-porcelain-deep) 100%)",
-        }}
-      />
+      <div className="bg-wash absolute inset-0" />
 
       {/* One faint drifting pool, tied to the shared --sy scroll variable */}
       <div

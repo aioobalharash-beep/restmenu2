@@ -30,7 +30,7 @@ export default function ScrollCue({
       className="focus-ring group inline-flex items-center gap-2.5 text-ink-faint transition-colors hover:text-ink-soft"
     >
       <span
-        className={`${rtl ? "text-[0.85rem]" : "font-mono text-[0.68rem] uppercase tracking-[0.2em]"}`}
+        className={`menu-label ${rtl ? "text-[0.85rem]" : "font-mono text-[0.68rem] uppercase tracking-[0.2em]"}`}
       >
         {rtl ? "الطبق التالي" : "Next course"}
       </span>

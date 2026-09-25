@@ -38,8 +38,7 @@ export default function IntroOverlay() {
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed inset-0 z-[60] grid place-items-center px-6 text-center"
-          style={{ background: "var(--color-porcelain)" }}
+          className="intro-overlay fixed inset-0 z-[60] grid place-items-center px-6 text-center"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -56,9 +55,9 @@ export default function IntroOverlay() {
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={brand.logo} alt={brand.name} className="h-16 w-auto max-w-[220px] object-contain" />
               ) : (
-                <span className="text-balance font-display text-[clamp(1.8rem,7vw,2.8rem)] leading-tight tracking-tight text-ink">
+                <span className="brand-wordmark text-balance font-display text-[clamp(1.8rem,7vw,2.8rem)] leading-tight tracking-tight text-ink">
                   {brand.name}
-                  {brand.tagline && <span className="italic text-saffron"> · {brand.tagline}</span>}
+                  {brand.tagline && <span className="brand-tagline italic text-saffron"> · {brand.tagline}</span>}
                 </span>
               )}
             </motion.div>
