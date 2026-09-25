@@ -47,7 +47,7 @@ const CategoryScene = forwardRef<
       {/* Giant ghost course name — a faint masthead behind the spread */}
       <span
         aria-hidden
-        className="pointer-events-none absolute top-[2%] z-0 select-none whitespace-nowrap font-display leading-none text-ink opacity-[0.05]"
+        className="ghost-masthead pointer-events-none absolute top-[2%] z-0 select-none whitespace-nowrap font-display leading-none text-ink opacity-[0.05]"
         style={{ insetInlineStart: "3%", fontSize: "clamp(3.5rem,13vw,12rem)" }}
       >
         {catName}
@@ -55,8 +55,8 @@ const CategoryScene = forwardRef<
 
       {/* Running header: the category name exactly as entered in the admin
           (owners who want an issue number type it into the name). */}
-      <div className="relative z-10 text-center">
-        <span className={`text-indigo ${rtl ? "text-[0.95rem]" : "font-mono text-[0.68rem] uppercase tracking-[0.34em]"}`}>
+      <div className="running-header relative z-10 text-center">
+        <span className={`running-header-label text-indigo ${rtl ? "text-[0.95rem]" : "font-mono text-[0.68rem] uppercase tracking-[0.34em]"}`}>
           {catName}
         </span>
       </div>

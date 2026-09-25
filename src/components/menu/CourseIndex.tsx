@@ -39,7 +39,7 @@ export default function CourseIndex({
               {rtl ? NUM_AR[i] ?? pad(i + 1) : pad(i + 1)}
             </span>
             <span
-              className={`text-[0.8rem] ${
+              className={`menu-label text-[0.8rem] ${
                 rtl
                   ? "text-[0.95rem]"
                   : "uppercase tracking-[0.16em]"

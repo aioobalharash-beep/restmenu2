@@ -204,6 +204,17 @@
   background-size: 160px 160px;
 }
 
+/* Page wash behind the menu (theme presets may restyle it). */
+.bg-wash {
+  background: radial-gradient(130% 100% at 50% -20%, var(--color-cream) 0%, var(--color-porcelain) 52%, var(--color-porcelain-deep) 100%);
+}
+
+/* Loader backdrop (theme presets may restyle it). */
+.intro-overlay { background: var(--color-porcelain); }
+
+/* Signature accent slot: off in the base (bistro) theme. */
+.star-accent { display: none; }
+
 /* The printed-card frame: a hairline rule around the whole screen, with a
    fainter champagne-gold inner rule like a letterpress menu card.
    Inset 0.75rem (1.25rem from sm up), pushed clear of notches/home bars. */

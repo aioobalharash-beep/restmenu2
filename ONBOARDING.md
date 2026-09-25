@@ -38,7 +38,43 @@ Swappable visual presets. Do the white-label steps in §3 first; a preset only
 changes the colour tokens, fonts, and any signature details — never the data
 model, bilingual/RTL, ordering, admin, prices, or deploy config.
 
-### The Parisian Bistro Moderne (café) — *current default*
+**Switching presets (pitching a prospect).** Presets live in `src/themes/`:
+`index.ts` registers each one (default light/evening mode, browser
+`themeColor`, ambient hues) and a CSS file scoped to
+`:root[data-brand="<id>"]` restyles the tokens and hook classes
+(`.running-header`, `.price-tag`, `.dish-name`, `.brand-wordmark`,
+`.star-accent`, `.bg-wash`, …). Pick one in `src/brand.config.ts`:
+
+```ts
+theme: "letsgo",        // or "bistro"
+name: "let's Go",       // the prospect's name + tagline
+tagline: "Specialty Coffee",
+```
+
+To revert a pitch, set `theme: "bistro"` and the name/tagline back (or
+`git revert` the commit that added the preset). Nothing else changes.
+
+### Let's Go (specialty coffee) — `theme: "letsgo"`, *active pitch*
+**Vibe:** bright, friendly specialty-coffee menu; light-first, navy in the evening.
+Built from the café's printed menu.
+
+| | Light | Evening |
+|---|---|---|
+| Page | `#EEF1F4` + mint `#A8DDD7` / butter `#F6E7A4` / lilac `#CFD2E2` gradient | `#151A33` navy, muted teal/gold/indigo glow |
+| Ink | navy `#1E2548` | cream `#F4F1E8` |
+| Accent | logo gold `#9E7B25` | yellow `#F2CF5B` |
+| Price badge | `#3D4459` with `#F6D55C` numerals | `#F2CF5B` with navy numerals |
+| Star | `#F7B84B`, dark outline | same |
+
+- **Fonts:** Poppins (headings, dish names, prices), Open Sans (body + labels),
+  Comfortaa (the "let's Go" wordmark), Almarai (Arabic headings) + Tajawal.
+  Loaded with `preload: false`, so they cost nothing while another preset is active.
+- **Signature details:** section title between double navy rules; navy price
+  badge; gold outlined star on the dish stage; rounded card frame.
+- **Files:** `src/themes/letsgo.css`, `src/themes/index.ts`, `src/app/layout.tsx`
+  (fonts), `src/brand.config.ts`.
+
+### The Parisian Bistro Moderne (café) — `theme: "bistro"`, *base preset*
 **Vibe:** sophisticated, vintage-meets-modern Parisian café menu card.
 
 **Dark-first.** The forest-green "Bistro Night" card is the default view; the

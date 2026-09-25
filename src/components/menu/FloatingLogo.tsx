@@ -24,13 +24,13 @@ export default function FloatingLogo() {
               draggable={false}
             />
           ) : (
-            <span className="font-display text-[1.3rem] leading-none tracking-[0.01em] text-ink">
+            <span className="brand-wordmark font-display text-[1.3rem] leading-none tracking-[0.01em] text-ink">
               {brand.name}
               {brand.tagline && (
                 // Tagline drops on phones so the wordmark clears the controls.
                 <span className="hidden sm:inline">
                   <span className="text-saffron"> · </span>
-                  <span className="italic text-saffron">{brand.tagline}</span>
+                  <span className="brand-tagline italic text-saffron">{brand.tagline}</span>
                 </span>
               )}
             </span>
