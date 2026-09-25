@@ -43,9 +43,11 @@ export type Brand = {
 };
 
 export const brand: Brand = {
-  theme: "bistro",
-  name: "Café Moderne",
-  tagline: "carte du jour",
+  // Pitch for Let's Go. To revert: theme "bistro", name "Café Moderne",
+  // tagline "carte du jour" (or `git revert` the commit that added this).
+  theme: "letsgo",
+  name: "let's Go",
+  tagline: "Specialty Coffee",
   logo: null,
   accent: "",
   accentDeep: "",

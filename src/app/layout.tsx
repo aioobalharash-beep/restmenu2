@@ -4,10 +4,15 @@ import {
   Libre_Franklin,
   Aref_Ruqaa,
   Tajawal,
+  Poppins,
+  Open_Sans,
+  Comfortaa,
+  Almarai,
 } from "next/font/google";
 import { brand } from "@/brand.config";
 import { THEMES } from "@/themes";
 import "./globals.css";
+import "@/themes/letsgo.css";
 
 // Dramatic wide serif (with its italic) for headers, dish names + course numerals.
 const serif = Playfair_Display({
@@ -42,6 +47,40 @@ const tajawal = Tajawal({
   display: "swap",
 });
 
+// "letsgo" preset fonts (see src/themes/letsgo.css). Not preloaded, so they
+// cost nothing while another preset is active.
+const lgDisplay = Poppins({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-lg-display",
+  display: "swap",
+  preload: false,
+});
+
+const lgBody = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-lg-body",
+  display: "swap",
+  preload: false,
+});
+
+const lgLogo = Comfortaa({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-lg-logo",
+  display: "swap",
+  preload: false,
+});
+
+const lgArDisplay = Almarai({
+  subsets: ["arabic"],
+  weight: ["700", "800"],
+  variable: "--font-lg-ar-display",
+  display: "swap",
+  preload: false,
+});
+
 export const metadata: Metadata = {
   title: `${brand.name} — The Menu`,
   description:
@@ -71,7 +110,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${serif.variable} ${humanist.variable} ${arDisplay.variable} ${tajawal.variable}`}
+      className={`${serif.variable} ${humanist.variable} ${arDisplay.variable} ${tajawal.variable} ${lgDisplay.variable} ${lgBody.variable} ${lgLogo.variable} ${lgArDisplay.variable}`}
       data-brand={brand.theme}
       style={brandVars}
     >

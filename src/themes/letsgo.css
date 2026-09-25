@@ -1,0 +1,196 @@
+/*
+  Theme preset: "letsgo" — Let's Go Specialty Coffee.
+  Active only when brand.config.ts has `theme: "letsgo"` (html[data-brand]).
+
+  Taken from their printed menu: navy ink on a soft mint / butter / lilac
+  gradient, a rounded gold wordmark, bold geometric headings (Poppins) over
+  a clean sans (Open Sans), Almarai for Arabic headings, section titles
+  between double navy rules, navy price badges with yellow numerals, and a
+  gold outlined star. Light-first; the evening toggle turns it navy.
+*/
+
+/* ---------- Tokens: light (default) ---------- */
+:root[data-brand="letsgo"],
+:root[data-brand="letsgo"] [data-theme="light"] {
+  --color-porcelain: #EEF1F4;
+  --color-porcelain-deep: #E2E6EC;
+  --color-cream: #F7F8FA;
+  --color-shell: #FFFFFF;
+  --color-ink: #1E2548;        /* navy */
+  --color-ink-soft: #3F4768;
+  --color-ink-faint: #7D84A1;
+  --color-saffron: #9E7B25;    /* logo gold, deep enough for text */
+  --color-saffron-deep: #7F6219;
+  --color-clay: #9E7B25;
+  --color-indigo: #3F4660;
+  --color-sage: #7FC8C2;       /* mint */
+  --color-hairline: rgba(30, 37, 72, 0.18);
+  --color-hairline-soft: rgba(30, 37, 72, 0.09);
+
+  --lg-mint: #A8DDD7;
+  --lg-butter: #F6E7A4;
+  --lg-lilac: #CFD2E2;
+  --lg-badge: #3D4459;         /* price badge */
+  --lg-badge-ink: #F6D55C;     /* price numerals */
+  --lg-star: #F7B84B;
+  --lg-star-stroke: #1B1D26;
+}
+
+/* ---------- Tokens: evening ---------- */
+:root[data-brand="letsgo"] [data-theme="dark"] {
+  --color-porcelain: #151A33;
+  --color-porcelain-deep: #10142A;
+  --color-cream: #1C2242;
+  --color-shell: #222A4E;
+  --color-ink: #F4F1E8;
+  --color-ink-soft: #C9CDDC;
+  --color-ink-faint: #8990AC;
+  --color-saffron: #F2CF5B;
+  --color-saffron-deep: #DDB43E;
+  --color-clay: #F2CF5B;
+  --color-indigo: #C9CDDC;
+  --color-sage: #8FD0C9;
+  --color-hairline: rgba(244, 241, 232, 0.16);
+  --color-hairline-soft: rgba(244, 241, 232, 0.08);
+
+  --lg-mint: #24545C;
+  --lg-butter: #4A4430;
+  --lg-lilac: #2A2F57;
+  --lg-badge: #F2CF5B;
+  --lg-badge-ink: #1E2548;
+  --lg-star: #F7B84B;
+  --lg-star-stroke: #0E1122;
+}
+
+/* ---------- Fonts ---------- */
+:root[data-brand="letsgo"] {
+  --font-display: var(--font-lg-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-lg-body), ui-sans-serif, system-ui, sans-serif;
+  --font-mono-face: var(--font-lg-body), ui-sans-serif, system-ui, sans-serif;
+}
+:root[data-brand="letsgo"] .lang-ar {
+  --font-display: var(--font-lg-ar-display), var(--font-tajawal), sans-serif;
+  --font-sans: var(--font-tajawal), ui-sans-serif, system-ui, sans-serif;
+}
+:root[data-brand="letsgo"] :is(h1, h2, h3, h4) { font-weight: 700; }
+
+/* ---------- Page wash: their mint / butter / lilac gradient ---------- */
+:root[data-brand="letsgo"] .bg-wash,
+:root[data-brand="letsgo"] .intro-overlay {
+  background:
+    radial-gradient(55% 42% at 100% 0%, var(--lg-mint), transparent 72%),
+    radial-gradient(70% 50% at 45% 58%, var(--lg-butter), transparent 72%),
+    radial-gradient(60% 45% at 0% 100%, var(--lg-lilac), transparent 70%),
+    var(--color-porcelain);
+}
+:root[data-brand="letsgo"] .paper-grain::before { opacity: 0.025; }
+
+/* ---------- Frame: the rounded menu card ---------- */
+:root[data-brand="letsgo"] .card-frame {
+  border-radius: 22px;
+  border-color: color-mix(in srgb, var(--color-ink) 24%, transparent);
+}
+:root[data-brand="letsgo"] .card-frame::after { content: none; }
+
+/* ---------- Section title between double navy rules ---------- */
+:root[data-brand="letsgo"] .running-header {
+  text-align: start;
+  padding: 0.6rem 0.1rem 0.55rem;
+  background-image:
+    linear-gradient(var(--color-ink), var(--color-ink)),
+    linear-gradient(var(--color-ink), var(--color-ink)),
+    linear-gradient(var(--color-ink), var(--color-ink)),
+    linear-gradient(var(--color-ink), var(--color-ink));
+  background-repeat: no-repeat;
+  background-size: 100% 1.5px;
+  background-position: 0 0, 0 6px, 0 calc(100% - 6px), 0 100%;
+}
+:root[data-brand="letsgo"] .running-header-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 4.6vw, 1.65rem);
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--color-ink);
+}
+:root[data-brand="letsgo"] .ghost-masthead { font-weight: 700; opacity: 0.035; }
+
+/* ---------- Dish name + labels ---------- */
+:root[data-brand="letsgo"] .dish-name {
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(1.9rem, 4.6vw, 3.6rem);
+}
+:root[data-brand="letsgo"] .lang-ar .dish-name {
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.25;
+}
+:root[data-brand="letsgo"] .menu-label {
+  text-transform: none;
+  letter-spacing: 0.01em;
+  font-weight: 600;
+  font-size: 0.82rem;
+  line-height: 1.2;
+}
+@media (min-width: 48rem) {
+  :root[data-brand="letsgo"] .running-header { padding: 0.85rem 0.1rem 0.8rem; }
+  :root[data-brand="letsgo"] .menu-label { font-size: 0.92rem; }
+  :root[data-brand="letsgo"] .price-tag { padding: 0.5rem 0.85rem 0.45rem; }
+  :root[data-brand="letsgo"] :is(.price-amount, .price-unit) { font-size: 1.35rem; }
+}
+
+/* ---------- Price: navy badge, yellow numerals ---------- */
+:root[data-brand="letsgo"] .price-tag {
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem 0.35rem;
+  border: 0;
+  border-radius: 9px;
+  background: var(--lg-badge);
+  box-shadow: 0 8px 18px -10px rgba(30, 37, 72, 0.55);
+}
+:root[data-brand="letsgo"] :is(.price-amount, .price-unit) {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--lg-badge-ink);
+}
+:root[data-brand="letsgo"] :is(.price-dot, .price-fraction) {
+  font-size: 1em;
+  color: var(--lg-badge-ink);
+}
+
+/* ---------- Wordmark ---------- */
+:root[data-brand="letsgo"] .brand-wordmark {
+  font-family: var(--font-lg-logo), var(--font-lg-display), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-saffron);
+}
+:root[data-brand="letsgo"] .brand-tagline {
+  font-family: var(--font-lg-body), sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.5em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  vertical-align: middle;
+}
+
+/* ---------- Signature gold star on the dish ---------- */
+:root[data-brand="letsgo"] .star-accent {
+  display: block;
+  fill: var(--lg-star);
+  stroke: var(--lg-star-stroke);
+  stroke-width: 1.3;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+/* ---------- Dish shadow tinted navy ---------- */
+:root[data-brand="letsgo"] .dish-shadow { filter: drop-shadow(0 30px 34px rgba(30, 37, 72, 0.3)); }
+:root[data-brand="letsgo"] [data-theme="dark"] .dish-shadow { filter: drop-shadow(0 34px 42px rgba(0, 0, 0, 0.55)); }
